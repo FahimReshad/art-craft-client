@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import { useLoaderData } from "react-router-dom";
 import AllArtCraftDataCard from "../Components/AllArtCraftDataCard";
 
