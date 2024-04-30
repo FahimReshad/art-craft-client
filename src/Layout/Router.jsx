@@ -13,54 +13,77 @@ import SeeArtCraft from "../Pages/SeeArtCraft";
 import ErrorePage from "../Pages/ErrorePage";
 
 export const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <MainLayout></MainLayout>,
-      errorElement: <ErrorePage></ErrorePage>,
-      children: [
-        {
-            path: '/',
-            element: <Home></Home>,
-            loader: () => fetch('https://art-craft-store-nine.vercel.app/craft')
-        },
-        {
-            path: '/allArtCraftItems',
-            element: <AllArtCraft></AllArtCraft>,
-            loader: () => fetch('https://art-craft-store-nine.vercel.app/craft')
-        }, 
-        {
-            path: '/addCraftIteM',
-            element: <PrivateRoute><AddCraftItem></AddCraftItem></PrivateRoute>
-        },
-        {
-            path: '/myArtCraft',
-            element: <PrivateRoute><MyArtCraft></MyArtCraft></PrivateRoute>
-            
-        },
-        {
-            path: '/login',
-            element: <Login></Login>
-        },
-        {
-            path: '/register',
-            element: <Register></Register>
-        }, 
-        {
-            path: '/updatePage/:id',
-            element: <PrivateRoute><UpdatePage></UpdatePage></PrivateRoute>,
-            loader: ({params}) => fetch(`https://art-craft-store-nine.vercel.app/craft/${params.id}`)
-        },
-        {
-            path: '/viewDetails/:id',
-            element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
-            loader: ({params}) => fetch(`https://art-craft-store-nine.vercel.app/craft/${params.id}`)
-        },
-        {
-            path: '/see/:id',
-            element: <PrivateRoute><SeeArtCraft></SeeArtCraft></PrivateRoute>,
-            loader: ({params}) => fetch(`https://art-craft-store-nine.vercel.app/artCraft/${params.id}`)
-        }
-      ]
-    },
-  ]);
-
+  {
+    path: "/",
+    element: <MainLayout></MainLayout>,
+    errorElement: <ErrorePage></ErrorePage>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+        loader: () => fetch("https://art-craft-store-nine.vercel.app/craft"),
+      },
+      {
+        path: "/allArtCraftItems",
+        element: <AllArtCraft></AllArtCraft>,
+        loader: () => fetch("https://art-craft-store-nine.vercel.app/craft"),
+      },
+      {
+        path: "/addCraftIteM",
+        element: (
+          <PrivateRoute>
+            <AddCraftItem></AddCraftItem>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/myArtCraft",
+        element: (
+          <PrivateRoute>
+            <MyArtCraft></MyArtCraft>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
+      {
+        path: "/updatePage/:id",
+        element: (
+          <PrivateRoute>
+            <UpdatePage></UpdatePage>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`https://art-craft-store-nine.vercel.app/craft/${params.id}`),
+      },
+      {
+        path: "/viewDetails/:id",
+        element: (
+          <PrivateRoute>
+            <ViewDetails></ViewDetails>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`https://art-craft-store-nine.vercel.app/craft/${params.id}`),
+      },
+      {
+        path: "/see/:id",
+        element: (
+          <PrivateRoute>
+            <SeeArtCraft></SeeArtCraft>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://art-craft-store-nine.vercel.app/artCraft/${params.id}`
+          ),
+      },
+    ],
+  },
+]);
