@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 
 
 const ArtAndCraftCategory = ({addCraft}) => {
-    const {subCategoryName, image, item, shortDes,} = addCraft;
+    const {subCategoryName, image, shortDes,} = addCraft;
     return (
         <>
         <Link to={`/see/${subCategoryName}`}>

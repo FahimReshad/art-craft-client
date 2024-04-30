@@ -22,15 +22,12 @@ const Login = () => {
           console.log(result.user);
           navigate(from);
           toast.success("Login successfully");
-          
-        }
-        else{
-         return toast.error('Plz registration first')
+          return;
         }
       })
-      .catch((error) => { 
-       console.log(error);
-      });
+      .catch(() =>
+        toast.error("Your email and password do not match each other")
+      );
   };
 
   const handleGoogleSignIn = () => {
@@ -49,18 +46,18 @@ const Login = () => {
 
   const handleFacebookSignIn = () => {
     facebookSignIn()
-    .then(result => {
-      console.log(result);
-      if(result.user){
-        navigate(from)
-        toast.success('Your login successfully')
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-      // toast.error("Your email or number and password do not match each other")
-    })
-  }
+      .then((result) => {
+        console.log(result);
+        if (result.user) {
+          navigate(from);
+          toast.success("Your login successfully");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        // toast.error("Your email or number and password do not match each other")
+      });
+  };
 
   return (
     <div className="flex h-screen items-center justify-center bg-[#8EA7E9]/20 p-6 md:p-0">
@@ -120,30 +117,30 @@ const Login = () => {
           </div>
           {/* sign with google */}
           <div className="flex gap-6 mx-auto w-1/2">
-          <div
-            onClick={handleGoogleSignIn}
-            className="mx-auto flex h-[50px] w-[200px] items-center overflow-hidden rounded-full shadow-md duration-300 hover:scale-95 hover:shadow"
-          >
-            <div className="flex h-full w-[50%] items-center bg-[#33232A] pl-4 text-sm text-white hover:cursor-pointer">
-              Sign With
+            <div
+              onClick={handleGoogleSignIn}
+              className="mx-auto flex h-[50px] w-[200px] items-center overflow-hidden rounded-full shadow-md duration-300 hover:scale-95 hover:shadow"
+            >
+              <div className="flex h-full w-[50%] items-center bg-[#33232A] pl-4 text-sm text-white hover:cursor-pointer">
+                Sign With
+              </div>
+              <span className="right-0 top-0 h-0 w-0 -rotate-90 border-b-[50px] border-r-[50px] border-b-transparent border-r-[#33232A] group-hover:hidden"></span>
+              <button className="pr-4 text-4xl font-bold text-[#33232A] hover:cursor-pointer">
+                G+
+              </button>
             </div>
-            <span className="right-0 top-0 h-0 w-0 -rotate-90 border-b-[50px] border-r-[50px] border-b-transparent border-r-[#33232A] group-hover:hidden"></span>
-            <button className="pr-4 text-4xl font-bold text-[#33232A] hover:cursor-pointer">
-              G+
-            </button>
-          </div>
-          <div
-            onClick={handleFacebookSignIn}
-            className="mx-auto flex h-[50px] w-[200px] items-center overflow-hidden rounded-full shadow-md duration-300 hover:scale-95 hover:shadow"
-          >
-            <div className="flex h-full w-[50%] items-center bg-[#33232A] pl-4 text-sm text-white hover:cursor-pointer">
-              Sign With
+            <div
+              onClick={handleFacebookSignIn}
+              className="mx-auto flex h-[50px] w-[200px] items-center overflow-hidden rounded-full shadow-md duration-300 hover:scale-95 hover:shadow"
+            >
+              <div className="flex h-full w-[50%] items-center bg-[#33232A] pl-4 text-sm text-white hover:cursor-pointer">
+                Sign With
+              </div>
+              <span className="right-0 top-0 h-0 w-0 -rotate-90 border-b-[50px] border-r-[50px] border-b-transparent border-r-[#33232A] group-hover:hidden"></span>
+              <button className="pr-4 text-4xl font-bold text-[#33232A] hover:cursor-pointer">
+                <FaFacebook />
+              </button>
             </div>
-            <span className="right-0 top-0 h-0 w-0 -rotate-90 border-b-[50px] border-r-[50px] border-b-transparent border-r-[#33232A] group-hover:hidden"></span>
-            <button className="pr-4 text-4xl font-bold text-[#33232A] hover:cursor-pointer">
-            <FaFacebook />
-            </button>
-          </div>
           </div>
         </div>
       </div>
