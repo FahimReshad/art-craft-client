@@ -110,12 +110,12 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <Link to='/' className="btn btn-ghost text-2xl font-lora">Artistry</Link>
+        <Link to='/' className="btn btn-ghost lg:text-2xl font-lora">Artistry</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="flex gap-6 px-1 text-lg font-lora">{navLinks}</ul>
       </div>
-      <div className="navbar-end gap-4">
+      <div className="navbar-end gap-2 lg:gap-4">
         <label className="cursor-pointer grid place-items-center">
           <input
           onChange={handleToggle}
@@ -171,7 +171,7 @@ const Navbar = () => {
                         ? "text-[#8F3034] font-lora font-semibold"
                         : ""
                     }>
-          <button onClick={handleLogOut} className="text-lg font-lora  btn btn-outline btn-error">LogOut</button>
+          <button onClick={handleLogOut} className="lg:text-lg font-lora  lg:btn btn-outline btn-error">LogOut</button>
         </button>
           </>
        : <NavLink to="/login" className={({ isActive}) =>
@@ -181,7 +181,7 @@ const Navbar = () => {
                         
                         : ""
                     }>
-          <button className="text-lg font-lora btn btn-outline btn-success">Login</button>
+          <button className="text-lg font-lora lg:btn btn-outline btn-success">Login</button>
         </NavLink>
         }
         </div>
@@ -193,7 +193,7 @@ const Navbar = () => {
                         
                         : ""
                     }>
-          <button className="text-lg font-lora btn btn-outline btn-error">Register</button>
+          <button className="lg:text-lg font-lora lg:btn btn-outline btn-error">Register</button>
         </NavLink>
       </div>
     </div>

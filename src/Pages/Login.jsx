@@ -22,10 +22,14 @@ const Login = () => {
           console.log(result.user);
           navigate(from);
           toast.success("Login successfully");
+          
+        }
+        else{
+         return toast.error('Plz registration first')
         }
       })
-      .catch((error) => {
-        console.error(error);
+      .catch((error) => { 
+       console.log(error);
       });
   };
 

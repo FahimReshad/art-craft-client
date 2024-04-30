@@ -4,63 +4,83 @@ import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const UpdatePage = () => {
-    const artCraft = useLoaderData();
-    console.log(artCraft);
-    const {_id, image, item, subCategoryName, customization, shortDes, price, rating, processingTime, stockStatus, } = artCraft;
+  const artCraft = useLoaderData();
+  console.log(artCraft);
+  const {
+    _id,
+    image,
+    item,
+    subCategoryName,
+    customization,
+    shortDes,
+    price,
+    rating,
+    processingTime,
+    stockStatus,
+  } = artCraft;
 
-    const {user} = useContext(AuthContext);
-    console.log(user);
-    const [isOpen, setIsOpen] = useState(false);
-    const [isOpenn, setIsOpenn] = useState(false);
-  
-    const [selectedValues, setSelectedValues] = useState(customization)
-    const [selectedValue, setSelectedValue] = useState(stockStatus)
-    // array of options 
-    const optionss = [' Yes', ' No'];
-    const options = [' In stock', ' Made to Order'];
+  const { user } = useContext(AuthContext);
+  console.log(user);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenn, setIsOpenn] = useState(false);
 
+  const [selectedValues, setSelectedValues] = useState(customization);
+  const [selectedValue, setSelectedValue] = useState(stockStatus);
+  // array of options
+  const optionss = [" Yes", " No"];
+  const options = [" In stock", " Made to Order"];
 
-    const handleUpdate = e => {
-        e.preventDefault();
-        const form = e.target;
-        const image = form.image.value;
-        const item = form.item_name.value;
-        const subCategoryName = form.subcategory_Name.value;
-        const customization =selectedValues;
-        const shortDes = form.shortDescription.value;
-        const price = form.price.value;
-        const rating = form.rating.value;
-        const processingTime = form.processing_time.value;
-        const userNames = user.displayName;
-        const stockStatus = selectedValue;
-        const email = user.email;
-        const updatedCraft = {image, item, subCategoryName, customization, shortDes, price, rating, processingTime, stockStatus, email, userNames}
-        console.log(updatedCraft);
-        fetch(`https://art-craft-store-nine.vercel.app/craft/${_id}`, {
-          method: "put",
-          headers: {
-            "content-type" : "application/json"
-          },
-          body: JSON.stringify(updatedCraft)
-        })
-        .then(res => res.json())
-        .then(data => {
-          console.log(data);
-          if(data){
-            if(data.modifiedCount){
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Art&Craft Item Updated Successfully',
-                    icon: 'success',
-                    confirmButtonText: 'Cool'
-                  })
-            }
-            form.reset()
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const image = form.image.value;
+    const item = form.item_name.value;
+    const subCategoryName = form.subcategory_Name.value;
+    const customization = selectedValues;
+    const shortDes = form.shortDescription.value;
+    const price = form.price.value;
+    const rating = form.rating.value;
+    const processingTime = form.processing_time.value;
+    const userNames = user.displayName;
+    const stockStatus = selectedValue;
+    const email = user.email;
+    const updatedCraft = {
+      image,
+      item,
+      subCategoryName,
+      customization,
+      shortDes,
+      price,
+      rating,
+      processingTime,
+      stockStatus,
+      email,
+      userNames,
+    };
+    console.log(updatedCraft);
+    fetch(`https://art-craft-store-nine.vercel.app/craft/${_id}`, {
+      method: "put",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updatedCraft),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data) {
+          if (data.modifiedCount) {
+            Swal.fire({
+              title: "Success!",
+              text: "Art&Craft Item Updated Successfully",
+              icon: "success",
+              confirmButtonText: "Cool",
+            });
           }
-        })
-      }
-
-
+          form.reset();
+        }
+      });
+  };
 
   return (
     <section className="p-6  dark:text-gray-900">
@@ -218,7 +238,6 @@ const UpdatePage = () => {
                 className="w-full rounded-md focus:ring focus:ring-opacity-75 dark:bg-gray-100 focus:dark:ring-violet-600 dark:border-gray-300 py-2 px-2"
               />
             </div>
-            
 
             <div
               onClick={() => setIsOpen(!isOpen)}
@@ -252,14 +271,27 @@ const UpdatePage = () => {
               </svg>
             </div>
             {/* dropdown - options  */}
-            <div className={`${isOpen ? 'visible top-0 lg:right-36 opacity-100' : 'invisible -top-4 -right-10 opacity-0'} relative mx-auto my-4 w-72 rounded-xl py-4 border duration-300`}>
-            {options?.map((option, idx) => (
-                <div key={idx} onClick={(e) => { setSelectedValue(e.target.textContent); setIsOpen(false);}} className="px-6 py-2 text-gray-500 hover:bg-gray-100">
-                    {option}
+            <div
+              className={`${
+                isOpen
+                  ? "visible top-0 lg:right-36 opacity-100"
+                  : "invisible -top-4 -right-10 opacity-0"
+              } relative mx-auto my-4 w-72 rounded-xl py-4 border duration-300`}
+            >
+              {options?.map((option, idx) => (
+                <div
+                  key={idx}
+                  onClick={(e) => {
+                    setSelectedValue(e.target.textContent);
+                    setIsOpen(false);
+                  }}
+                  className="px-6 py-2 text-gray-500 hover:bg-gray-100"
+                >
+                  {option}
                 </div>
-            ))}
-        </div>
-        <div className="col-span-full sm:col-span-2"></div>
+              ))}
+            </div>
+            <div className="col-span-full sm:col-span-2"></div>
             <div className="col-span-full sm:col-span-2">
               <input
                 type="submit"

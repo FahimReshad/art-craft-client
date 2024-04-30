@@ -31,7 +31,7 @@ const Home = () => {
                 </div>
             <div className="container mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:my-16">
             {
-                addCrafts.slice(0,6).map(addCraft => <ArtAndCraftCategory addCraft={addCraft}></ArtAndCraftCategory>)
+                addCrafts.slice(1,7).map(addCraft => <ArtAndCraftCategory addCraft={addCraft}></ArtAndCraftCategory>)
             }
             </div>
             </div>
