@@ -7,7 +7,6 @@ const AddCraftItem = () => {
   console.log(user);
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenn, setIsOpenn] = useState(false);
-  const [addCraft, setAddCraft] = useState(null);
 
   const [selectedValues, setSelectedValues] = useState("Choose One");
   const [selectedValue, setSelectedValue] = useState("Choose One");
