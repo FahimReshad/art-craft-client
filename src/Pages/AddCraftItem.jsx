@@ -35,7 +35,7 @@ const AddCraftItem = () => {
     const email = user.email;
     const addCraft = {image, item, subCategoryName, customization, shortDes, price, rating, processingTime, userName, userEmail, stockStatus, email, userNames}
     console.log(addCraft);
-    fetch('http://localhost:5000/craft', {
+    fetch('https://art-craft-store-nine.vercel.app/craft', {
       method: "POST",
       headers: {
         "content-type" : "application/json"

@@ -21,12 +21,12 @@ export const router = createBrowserRouter([
         {
             path: '/',
             element: <Home></Home>,
-            loader: () => fetch('http://localhost:5000/craft')
+            loader: () => fetch('https://art-craft-store-nine.vercel.app/craft')
         },
         {
             path: '/allArtCraftItems',
             element: <AllArtCraft></AllArtCraft>,
-            loader: () => fetch('http://localhost:5000/craft')
+            loader: () => fetch('https://art-craft-store-nine.vercel.app/craft')
         }, 
         {
             path: '/addCraftIteM',
@@ -48,17 +48,17 @@ export const router = createBrowserRouter([
         {
             path: '/updatePage/:id',
             element: <PrivateRoute><UpdatePage></UpdatePage></PrivateRoute>,
-            loader: ({params}) => fetch(`http://localhost:5000/craft/${params.id}`)
+            loader: ({params}) => fetch(`https://art-craft-store-nine.vercel.app/craft/${params.id}`)
         },
         {
             path: '/viewDetails/:id',
             element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
-            loader: ({params}) => fetch(`http://localhost:5000/craft/${params.id}`)
+            loader: ({params}) => fetch(`https://art-craft-store-nine.vercel.app/craft/${params.id}`)
         },
         {
             path: '/see/:id',
             element: <PrivateRoute><SeeArtCraft></SeeArtCraft></PrivateRoute>,
-            loader: ({params}) => fetch(`http://localhost:5000/artCraft/${params.id}`)
+            loader: ({params}) => fetch(`https://art-craft-store-nine.vercel.app/artCraft/${params.id}`)
         }
       ]
     },

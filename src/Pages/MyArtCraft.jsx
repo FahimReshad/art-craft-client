@@ -11,7 +11,7 @@ const MyArtCraft = () => {
   const [myItem, setMyItem] = useState([]);
   const [artCraft, setArtCraft] = useState(false);
   useEffect(()=> {
-    fetch(`http://localhost:5000/myProduct/${user?.email}`)
+    fetch(`https://art-craft-store-nine.vercel.app/myProduct/${user?.email}`)
     .then(res => res.json())
     .then(data => {
       console.log(data)

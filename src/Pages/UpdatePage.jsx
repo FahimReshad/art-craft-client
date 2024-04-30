@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { useLoaderData } from "react-router-dom";
-import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
 const UpdatePage = () => {
@@ -37,7 +36,7 @@ const UpdatePage = () => {
         const email = user.email;
         const updatedCraft = {image, item, subCategoryName, customization, shortDes, price, rating, processingTime, stockStatus, email, userNames}
         console.log(updatedCraft);
-        fetch(`http://localhost:5000/craft/${_id}`, {
+        fetch(`https://art-craft-store-nine.vercel.app/craft/${_id}`, {
           method: "put",
           headers: {
             "content-type" : "application/json"
