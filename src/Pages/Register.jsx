@@ -1,12 +1,13 @@
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 
 const Register = () => {
 
     const {createUser} = useContext(AuthContext);
+    const navigate = useNavigate();
     const handleRegistration = e => {
         e.preventDefault();
         const form = e.target;
@@ -25,12 +26,14 @@ const Register = () => {
          else if (!/[a-z]/.test(password)){
            return  toast.error('Password should have at least one lowerCase characters')
          }
-         else{
-             toast.success('Registration successfully')
-         }
+         
         createUser(email, password)
         .then(result => {
             console.log(result.user);
+            if(result.user){
+                navigate('/')
+                toast.success('Registration successfully')
+            }
             
         })
         .catch(error => {
