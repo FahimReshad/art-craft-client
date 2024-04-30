@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { toast } from "react-toastify";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const AddCraftItem = () => {
+  const {user} = useContext(AuthContext);
+  console.log(user);
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenn, setIsOpenn] = useState(false);
   const [addCraft, setAddCraft] = useState(null);
@@ -26,9 +29,11 @@ const AddCraftItem = () => {
     const rating = form.rating.value;
     const processingTime = form.processing_time.value;
     const userName = form.userName.value;userName
+    const userNames = user.displayName;
     const userEmail = form.userEmail.value;
     const stockStatus = selectedValue;
-    const addCraft = {image, item, subCategoryName, customization, shortDes, price, rating, processingTime, userName, userEmail, stockStatus}
+    const email = user.email;
+    const addCraft = {image, item, subCategoryName, customization, shortDes, price, rating, processingTime, userName, userEmail, stockStatus, email, userNames}
     console.log(addCraft);
     fetch('http://localhost:5000/craft', {
       method: "POST",

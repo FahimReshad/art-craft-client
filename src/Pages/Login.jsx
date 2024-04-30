@@ -52,7 +52,7 @@ const Login = () => {
       }
     })
     .catch(() => {
-      toast.error("Your email or number and password do not match each other")
+      // toast.error("Your email or number and password do not match each other")
     })
   }
 

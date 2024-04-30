@@ -1,7 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+  const {user, logOut} = useContext(AuthContext)
     const [theme, setTheme] = useState('light')
     useEffect(() => {
         localStorage.setItem('theme', theme)
@@ -16,9 +19,23 @@ const Navbar = () => {
         setTheme('light')
     }
   };
+
+  const handleLogOut = () => {
+    logOut()
+    .then(() => {
+      toast.success("SignOut successfully")
+  })
+  .catch(() => {
+      toast.error("SignOut Unsuccessful")
+  })
+  }
+
+
+
   const navLinks = (
     <>
-      <li>
+      {
+        <li>
         <NavLink to="/" className={({ isActive}) =>
                       isActive
                         ? "text-[#8F3034] font-lora font-semibold"
@@ -27,6 +44,7 @@ const Navbar = () => {
                         : ""
                     }>Home</NavLink>
       </li>
+      }
       <li>
         <NavLink to="/allArtCraftItems" className={({ isActive}) =>
                       isActive
@@ -137,6 +155,15 @@ const Navbar = () => {
                     }>
           <button className="text-lg font-lora">Login</button>
         </NavLink>
+        <button className={({ isActive}) =>
+                      isActive
+                        ? "text-[#8F3034] font-lora font-semibold"
+                        
+                        
+                        : ""
+                    }>
+          <button onClick={handleLogOut} className="text-lg font-lora">Log Out</button>
+        </button>
         <NavLink to="/register" className={({ isActive}) =>
                       isActive
                         ? "text-[#8F3034] font-lora font-semibold"
