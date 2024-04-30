@@ -8,11 +8,15 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import UpdatePage from "../Pages/UpdatePage";
 import ViewDetails from "../Pages/ViewDetails";
+import PrivateRoute from "./PrivateRoute";
+import SeeArtCraft from "../Pages/SeeArtCraft";
+import ErrorePage from "../Pages/ErrorePage";
 
 export const router = createBrowserRouter([
     {
       path: "/",
       element: <MainLayout></MainLayout>,
+      errorElement: <ErrorePage></ErrorePage>,
       children: [
         {
             path: '/',
@@ -26,11 +30,11 @@ export const router = createBrowserRouter([
         }, 
         {
             path: '/addCraftIteM',
-            element: <AddCraftItem></AddCraftItem>
+            element: <PrivateRoute><AddCraftItem></AddCraftItem></PrivateRoute>
         },
         {
             path: '/myArtCraft',
-            element: <MyArtCraft></MyArtCraft>
+            element: <PrivateRoute><MyArtCraft></MyArtCraft></PrivateRoute>
             
         },
         {
@@ -43,13 +47,18 @@ export const router = createBrowserRouter([
         }, 
         {
             path: '/updatePage/:id',
-            element: <UpdatePage></UpdatePage>,
+            element: <PrivateRoute><UpdatePage></UpdatePage></PrivateRoute>,
             loader: ({params}) => fetch(`http://localhost:5000/craft/${params.id}`)
         },
         {
             path: '/viewDetails/:id',
-            element: <ViewDetails></ViewDetails>,
+            element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
             loader: ({params}) => fetch(`http://localhost:5000/craft/${params.id}`)
+        },
+        {
+            path: '/see/:id',
+            element: <PrivateRoute><SeeArtCraft></SeeArtCraft></PrivateRoute>,
+            loader: ({params}) => fetch(`http://localhost:5000/artCraft/${params.id}`)
         }
       ]
     },

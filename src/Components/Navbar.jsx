@@ -45,7 +45,8 @@ const Navbar = () => {
                     }>Home</NavLink>
       </li>
       }
-      <li>
+      {
+        <li>
         <NavLink to="/allArtCraftItems" className={({ isActive}) =>
                       isActive
                         ? "text-[#8F3034] font-lora font-semibold"
@@ -54,7 +55,10 @@ const Navbar = () => {
                         : ""
                     }>All Art & craft Items</NavLink>
       </li>
-      <li>
+      }
+      {
+        user &&
+        <li>
         <NavLink to="/addCraftItem" className={({ isActive}) =>
                       isActive
                         ? "text-[#8F3034] font-lora font-semibold"
@@ -63,7 +67,10 @@ const Navbar = () => {
                         : ""
                     }>Add Craft Item</NavLink>
       </li>
-      <li>
+      }
+      {
+        user &&
+        <li>
         <NavLink to="/myArtCraft" className={({ isActive}) =>
                       isActive
                         ? "text-[#8F3034] font-lora font-semibold"
@@ -72,11 +79,12 @@ const Navbar = () => {
                         : ""
                     }>My Art&Craft List</NavLink>
       </li>
+      }
     </>
   );
 
   return (
-    <div className="navbar text-white bg-[#33232A] md:px-10 py-4">
+    <div className="navbar text-white bg-[#33232A] md:px-10 py-4 h-20">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -146,24 +154,38 @@ const Navbar = () => {
           </svg>
         </label>
 
-        <NavLink to="/login" className={({ isActive}) =>
+        <div className="flex gap-6">
+          {
+         user ? <>
+         <div className="pointer group relative mx-auto my-14 flex h-10 justify-center">
+         <div className="relative group">
+                    <img className="size-[40px] bg-slate-500 object-cover rounded-full" src={user.photoURL} alt="avatar navigate ui" />
+                </div>
+                <div className="absolute -bottom-12 cursor-pointer whitespace-nowrap opacity-0 duration-500 hover:hidden group-hover:-bottom-16 group-hover:opacity-100  ">
+                <p className="rounded-md bg-[#0EA5E9] px-3 py-2 text-white shadow-[0px_0px_10px_0px_#0EA5E9]">{user.displayName}</p>
+                <span className="absolute -top-2 left-[50%] h-0 w-0 -translate-x-1/2 -rotate-[45deg] border-b-[20px] border-r-[20px] border-b-transparent border-r-[#0EA5E9] shadow-[0px_0px_10px_0px_#0EA5E9]"></span>
+            </div>
+         </div>
+          <button className={({ isActive}) =>
                       isActive
                         ? "text-[#8F3034] font-lora font-semibold"
-                        
-                        
                         : ""
                     }>
-          <button className="text-lg font-lora">Login</button>
-        </NavLink>
-        <button className={({ isActive}) =>
-                      isActive
-                        ? "text-[#8F3034] font-lora font-semibold"
-                        
-                        
-                        : ""
-                    }>
-          <button onClick={handleLogOut} className="text-lg font-lora">Log Out</button>
+          <button onClick={handleLogOut} className="text-lg font-lora  btn btn-outline btn-error">LogOut</button>
         </button>
+          </>
+       : <NavLink to="/login" className={({ isActive}) =>
+                      isActive
+                        ? "text-[#8F3034] font-lora font-semibold"
+                        
+                        
+                        : ""
+                    }>
+          <button className="text-lg font-lora btn btn-outline btn-success">Login</button>
+        </NavLink>
+        }
+        </div>
+       
         <NavLink to="/register" className={({ isActive}) =>
                       isActive
                         ? "text-[#8F3034] font-lora font-semibold"
@@ -171,7 +193,7 @@ const Navbar = () => {
                         
                         : ""
                     }>
-          <button className="text-lg font-lora">Register</button>
+          <button className="text-lg font-lora btn btn-outline btn-error">Register</button>
         </NavLink>
       </div>
     </div>

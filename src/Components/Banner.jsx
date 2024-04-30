@@ -4,7 +4,7 @@ import { useLoaderData } from "react-router-dom";
 
 const Banner = () => {
     const [currentSlider, setCurrentSlider] = useState(0);
-  const sliders = [{img: "https://source.unsplash.com/1200x540/?nature", title: "Escape 1", des: "A Symphony of Tranquility. Experience the perfect blend of relaxation and excitement.",}, {img: "https://source.unsplash.com/1200x540/?hill", title: "Escape 2", des: "A Symphony of Tranquility. Experience the perfect blend of relaxation and excitement.",}, {img: "https://source.unsplash.com/1200x540/?mountain", title: "Escape 3", des: "A Symphony of Tranquility. Experience the perfect blend of relaxation and excitement.",}, {img: "https://source.unsplash.com/1200x540/?river", title: "Escape 4",des: "A Symphony of Tranquility. Experience the perfect blend of relaxation and excitement.",}, {img: "https://source.unsplash.com/1200x540/?sea", title: "Escape 5", des: "A Symphony of Tranquility. Experience the perfect blend of relaxation and excitement.",},];
+  const sliders = [{img: "https://i.ibb.co/9tDnzqF/3-a116c2ad-b3cd-4d23-a8e3-9c068b20484a.jpg", title: "Landscape Painting", des: "A serene landscape painting capturing the beauty of mountains.",}, {img: "https://i.ibb.co/CbWS2DH/images-q-tbn-ANd9-Gc-QFJCk-ENb-J-6i-x-36i-NKJ5-BTXl-P5-A7-FIKo-Sl7d-GJbe1-EGw-Cq6-Vu-S7a-BLw-JCIgdq.jpg", title: "Portrait Drawing", des: " detailed pencil sketch portrait capturing the essence of the subject.",}, {img: "https://i.ibb.co/XXNdRLJ/public.jpg", title: "Cartoon Drawing", des: "Fun and lively comic strip drawing with colorful characters.",}]
   // if you don't want to change the slider automatically then you can just remove the useEffect
   useEffect(() => {
     const intervalId = setInterval(() => setCurrentSlider(currentSlider === sliders.length - 1 ? 0 : currentSlider + 1), 5000);
@@ -16,7 +16,7 @@ const Banner = () => {
 
     return (
         <>
-            <div className="w-full h-60 sm:h-96 md:h-[540px] flex flex-col items-center justify-center gap-5 lg:gap-10 bg-cover bg-center before:absolute before:bg-black/50 before:inset-0 transform duration-1000 ease-linear"
+            <div className="w-full h-0 sm:h-96 md:h-[640px] flex flex-col items-center object-cover justify-center gap-5 lg:gap-10 bg-cover bg-center before:absolute before:bg-black/50 before:inset-0 transform duration-1000 ease-linear"
                 style={{ backgroundImage: `url(${sliders[currentSlider].img})` }}>
                 {/* text container here */}
                 <div className="drop-shadow-lg text-white text-center px-5">

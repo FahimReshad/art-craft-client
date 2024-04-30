@@ -27,8 +27,8 @@ const ViewDetails = () => {
         </div>
         <div className="mt-5 flex items-center justify-between">
             <h2 className="font-semibold md:text-xl lg:text-2xl">stockStatus: ${stockStatus}</h2>
-            <h2 className="font-semibold md:text-xl lg:text-2xl">userEmails: {userEmails}</h2>
-            <h2 className="font-semibold md:text-xl lg:text-2xl">userNames: {userNames}</h2>
+            <h2 className="font-semibold md:text-xl lg:text-2xl">userEmail: {userEmails}</h2>
+            <h2 className="font-semibold md:text-xl lg:text-2xl">userName: {userNames}</h2>
             
         </div>
       </div>

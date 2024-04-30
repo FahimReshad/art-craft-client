@@ -46,12 +46,14 @@ const Login = () => {
   const handleFacebookSignIn = () => {
     facebookSignIn()
     .then(result => {
+      console.log(result);
       if(result.user){
         navigate(from)
         toast.success('Your login successfully')
       }
     })
-    .catch(() => {
+    .catch((error) => {
+      console.log(error);
       // toast.error("Your email or number and password do not match each other")
     })
   }
