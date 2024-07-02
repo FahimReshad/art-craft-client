@@ -159,7 +159,7 @@ const Navbar = () => {
          user ? <>
          <div className="pointer group relative mx-auto my-14 flex h-10 justify-center">
          <div className="relative group">
-                    <img className="md:size-[40px] bg-slate-500 object-cover rounded-full" src={user.photoURL} alt="avatar navigate ui" />
+                    <img className="md:size-[40px] bg-slate-500 object-cover rounded-full" src={user?.photoURL} alt="" />
                 </div>
                 <div className="absolute -bottom-12 cursor-pointer whitespace-nowrap opacity-0 duration-500 hover:hidden group-hover:-bottom-16 group-hover:opacity-100  ">
                 <p className="rounded-md bg-[#0EA5E9] px-3 py-2 text-white shadow-[0px_0px_10px_0px_#0EA5E9]">{user.displayName}</p>
@@ -168,17 +168,15 @@ const Navbar = () => {
          </div>
           <button className={({ isActive}) =>
                       isActive
-                        ? "text-[#8F3034] font-lora font-semibold"
-                        : ""
+                        ? "bg-[#8F3034] font-lora font-semibold"
+                        : "text-[#8F3034]"
                     }>
-          <button onClick={handleLogOut} className="lg:text-lg font-lora  lg:btn btn-outline btn-error">LogOut</button>
+          <button onClick={handleLogOut} className="lg:text-lg font-lora lg:btn lg:btn-outline lg:bg-[#8F3034] lg:text-white">LogOut</button>
         </button>
           </>
        : <NavLink to="/login" className={({ isActive}) =>
                       isActive
                         ? "text-[#8F3034] font-lora font-semibold"
-                        
-                        
                         : ""
                     }>
           <button className="text-lg font-lora btn btn-outline btn-success">Login</button>
