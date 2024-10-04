@@ -46,8 +46,8 @@ const AddCraftItem = () => {
       email,
       userNames,
     };
-    console.log(addCraft);
     fetch("https://art-craft-store-nine.vercel.app/craft", {
+      credentials: true,
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -4,82 +4,81 @@ import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
 
 const Navbar = () => {
-  const {user, logOut} = useContext(AuthContext)
-    const [theme, setTheme] = useState('light')
-    useEffect(() => {
-        localStorage.setItem('theme', theme)
-        const localTheme = localStorage.getItem('theme')
-        document.querySelector('html').setAttribute('data-theme', localTheme)
-    }, [theme])
+  const { user, logOut } = useContext(AuthContext);
+  const [theme, setTheme] = useState("light");
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    const localTheme = localStorage.getItem("theme");
+    document.querySelector("html").setAttribute("data-theme", localTheme);
+  }, [theme]);
   const handleToggle = (e) => {
-    if(e.target.checked){
-        setTheme('dark')
-    }
-    else{
-        setTheme('light')
+    if (e.target.checked) {
+      setTheme("dark");
+    } else {
+      setTheme("light");
     }
   };
 
   const handleLogOut = () => {
     logOut()
-    .then(() => {
-      toast.success("SignOut successfully")
-  })
-  .catch(() => {
-      toast.error("SignOut Unsuccessful")
-  })
-  }
-
-
+      .then(() => {
+        toast.success("SignOut successfully");
+      })
+      .catch(() => {
+        toast.error("SignOut Unsuccessful");
+      });
+  };
 
   const navLinks = (
     <>
       {
         <li>
-        <NavLink to="/" className={({ isActive}) =>
-                      isActive
-                        ? "text-[#8F3034] font-lora font-semibold"
-                        
-                        
-                        : ""
-                    }>Home</NavLink>
-      </li>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? "text-[#8F3034] font-lora font-semibold" : ""
+            }
+          >
+            Home
+          </NavLink>
+        </li>
       }
       {
         <li>
-        <NavLink to="/allArtCraftItems" className={({ isActive}) =>
-                      isActive
-                        ? "text-[#8F3034] font-lora font-semibold"
-                        
-                        
-                        : ""
-                    }>All Art & craft Items</NavLink>
-      </li>
+          <NavLink
+            to="/allArtCraftItems"
+            className={({ isActive }) =>
+              isActive ? "text-[#8F3034] font-lora font-semibold" : ""
+            }
+          >
+            All Art & craft Items
+          </NavLink>
+        </li>
       }
-      {
-        user &&
+      {user && (
         <li>
-        <NavLink to="/addCraftItem" className={({ isActive}) =>
-                      isActive
-                        ? "text-[#8F3034] font-lora font-semibold"
-                        
-                        
-                        : ""
-                    }>Add Craft Item</NavLink>
-      </li>
-      }
-      {
-        user &&
+          <NavLink
+            to="/addCraftItem"
+            className={({ isActive }) =>
+              isActive ? "text-[#8F3034] font-lora font-semibold" : ""
+            }
+          >
+            Add Craft Item
+          </NavLink>
+        </li>
+      )}
+      {user && (
         <li>
-        <NavLink to="/myArtCraft" className={({ isActive}) =>
-                      isActive
-                        ? "text-[#8F3034] font-lora font-semibold"
-                        
-                        
-                        : ""
-                    }>My Art&Craft List</NavLink>
-      </li>
-      }
+          <NavLink
+            to="/myArtCraft"
+            className={({ isActive }) =>
+              isActive ? "text-[#8F3034] font-lora font-semibold" : ""
+            }
+          >
+            My Art&Craft List
+          </NavLink>
+        </li>
+      )}
     </>
   );
 
@@ -110,7 +109,9 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <Link to='/' className="btn btn-ghost lg:text-2xl font-lora">Artistry</Link>
+        <Link to="/" className="btn btn-ghost lg:text-2xl font-lora">
+          Artistry
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="flex gap-6 px-1 text-lg font-lora">{navLinks}</ul>
@@ -118,7 +119,7 @@ const Navbar = () => {
       <div className="navbar-end gap-2 lg:gap-4">
         <label className="cursor-pointer grid place-items-center">
           <input
-          onChange={handleToggle}
+            onChange={handleToggle}
             type="checkbox"
             value="synthwave"
             className="toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-2"
@@ -155,43 +156,61 @@ const Navbar = () => {
         </label>
 
         <div className="flex gap-6">
-          {
-         user ? <>
-         <div className="pointer group relative mx-auto my-14 flex h-10 justify-center">
-         <div className="relative group">
-                    <img className="md:size-[40px] bg-slate-500 object-cover rounded-full" src={user?.photoURL} alt="" />
+          {user ? (
+            <>
+              <div className="pointer group relative mx-auto my-14 flex h-10 justify-center">
+                <div className="relative group">
+                  <img
+                    className="md:size-[40px] bg-slate-500 object-cover rounded-full"
+                    src={user?.photoURL}
+                    alt=""
+                  />
                 </div>
                 <div className="absolute -bottom-12 cursor-pointer whitespace-nowrap opacity-0 duration-500 hover:hidden group-hover:-bottom-16 group-hover:opacity-100  ">
-                <p className="rounded-md bg-[#0EA5E9] px-3 py-2 text-white shadow-[0px_0px_10px_0px_#0EA5E9]">{user.displayName}</p>
-                <span className="absolute -top-2 left-[50%] h-0 w-0 -translate-x-1/2 -rotate-[45deg] border-b-[20px] border-r-[20px] border-b-transparent border-r-[#0EA5E9] shadow-[0px_0px_10px_0px_#0EA5E9]"></span>
-            </div>
-         </div>
-          <button className={({ isActive}) =>
-                      isActive
-                        ? "bg-[#8F3034] font-lora font-semibold"
-                        : "text-[#8F3034]"
-                    }>
-          <button onClick={handleLogOut} className="lg:text-lg font-lora lg:btn lg:btn-outline lg:bg-[#8F3034] lg:text-white">LogOut</button>
-        </button>
-          </>
-       : <NavLink to="/login" className={({ isActive}) =>
-                      isActive
-                        ? "text-[#8F3034] font-lora font-semibold"
-                        : ""
-                    }>
-          <button className="text-lg font-lora btn btn-outline btn-success">Login</button>
-        </NavLink>
-        }
+                  <p className="rounded-md bg-[#0EA5E9] px-3 py-2 text-white shadow-[0px_0px_10px_0px_#0EA5E9]">
+                    {user.displayName}
+                  </p>
+                  <span className="absolute -top-2 left-[50%] h-0 w-0 -translate-x-1/2 -rotate-[45deg] border-b-[20px] border-r-[20px] border-b-transparent border-r-[#0EA5E9] shadow-[0px_0px_10px_0px_#0EA5E9]"></span>
+                </div>
+              </div>
+              <button
+                className={({ isActive }) =>
+                  isActive
+                    ? "bg-[#8F3034] font-lora font-semibold"
+                    : "text-[#8F3034]"
+                }
+              >
+                <button
+                  onClick={handleLogOut}
+                  className="lg:text-lg font-lora lg:btn lg:btn-outline lg:bg-[#8F3034] lg:text-white"
+                >
+                  LogOut
+                </button>
+              </button>
+            </>
+          ) : (
+            <NavLink
+              to="/login"
+              className={({ isActive }) =>
+                isActive ? "text-[#8F3034] font-lora font-semibold" : ""
+              }
+            >
+              <button className="text-lg font-lora btn btn-outline btn-success">
+                Login
+              </button>
+            </NavLink>
+          )}
         </div>
-       
-        <NavLink to="/register" className={({ isActive}) =>
-                      isActive
-                        ? "text-[#8F3034] font-lora font-semibold"
-                        
-                        
-                        : ""
-                    }>
-          <button className="lg:text-lg font-lora btn btn-outline btn-error">Register</button>
+
+        <NavLink
+          to="/register"
+          className={({ isActive }) =>
+            isActive ? "text-[#8F3034] font-lora font-semibold" : ""
+          }
+        >
+          <button className="lg:text-lg font-lora btn btn-outline btn-error">
+            Register
+          </button>
         </NavLink>
       </div>
     </div>

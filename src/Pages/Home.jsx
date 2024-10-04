@@ -8,7 +8,6 @@ import OurPartner from "../Components/OurPartner";
 
 const Home = () => {
     const addCrafts = useLoaderData();
-    console.log(addCrafts);
     return (
         <div>
             <Banner></Banner>

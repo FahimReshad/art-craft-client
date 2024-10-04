@@ -4,7 +4,6 @@ import AllArtCraftDataCard from "../Components/AllArtCraftDataCard";
 
 const AllArtCraft = () => {
   const allArtCraftData = useLoaderData();
-  console.log(allArtCraftData);
 
   return (
     <>

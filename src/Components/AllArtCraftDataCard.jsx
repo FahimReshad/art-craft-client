@@ -2,7 +2,6 @@
 import { Link } from "react-router-dom";
 
 const AllArtCraftDataCard = ({ artCraftData }) => {
-  console.log(artCraftData);
   const { _id, image, item, price } = artCraftData;
   return (
     <div className="overflow-x-auto">

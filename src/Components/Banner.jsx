@@ -29,7 +29,7 @@ const Banner = () => {
       5000
     );
     return () => clearInterval(intervalId);
-  }, [currentSlider]);
+  }, [currentSlider, sliders.length]);
 
   return (
     <>
