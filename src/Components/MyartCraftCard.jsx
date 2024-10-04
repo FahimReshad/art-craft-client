@@ -39,7 +39,6 @@ const MyartCraftCard = ({ items, artCraft, setArtCraft }) => {
       }
     });
   };
-
   return (
     <div className="space-y-4 rounded-lg bg-white p-6 shadow-lg">
       <img
