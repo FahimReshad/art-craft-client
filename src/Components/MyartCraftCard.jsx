@@ -19,14 +19,14 @@ const MyartCraftCard = ({ items, artCraft, setArtCraft }) => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
-      if (result.isConfirmed) {
+      if (result?.isConfirmed) {
         fetch(`https://art-craft-store-nine.vercel.app/delete/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
-            if (data.deletedCount > 0) {
+            if (data?.deletedCount > 0) {
               Swal.fire({
                 title: "Deleted!",
                 text: "Your Coffee has been deleted.",

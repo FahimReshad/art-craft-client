@@ -81,7 +81,6 @@ const Navbar = () => {
       )}
     </>
   );
-
   return (
     <div className="navbar text-white bg-[#33232A] md:px-10 py-4 h-20">
       <div className="navbar-start">
